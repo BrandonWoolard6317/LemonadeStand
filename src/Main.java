@@ -49,6 +49,9 @@ public class Main {
                 usersResponseWord = usersInput.nextLine();
                 System.out.println(createStrings(usersResponseWord,usersResponseNumber,r));
                 System.out.println("What's the quantity of "+createStrings(usersResponseWord,usersResponseNumber,r)+" did you purchase?");
+                usersResponseNumber = usersInput.nextLine();
+                System.out.println("What was the cost per quantity?")
+                usersResponseNumber = usersInput.nextLine();
                 System.out.println("R:"+r);
                 System.out.println("Y:"+y);
                 if(r==0){
