@@ -1,91 +1,154 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[]args){
+    public static void main(String[] args) {
         Scanner usersInput = new Scanner(System.in);
         String usersResponseWord = "";
         String item1 = "";
         String item2 = "";
         String item3 = "";
         String item4 = "";
-        String idk = "";
         int usersResponseNumber = 0;
-        int a = 0;
+        int item1Q = 0;
+        int item2Q = 0;
+        int item3Q = 0;
+        int item4Q = 0;
+        double item1P = 0;
+        double item2P = 0;
+        double item3P = 0;
+        double item4P = 0;
         int r = 0;
         int u = 0;
-        int y = 0;
         int t = 0;
-        boolean Loop = true;
-        while(Loop) {
-            if(a>0){
-                a--;
-            }
-            System.out.println("How many items did it take to produce the lemonade?(Only enter a number!)");
+
+            System.out.println("How many items did you purchase?");
             usersResponseNumber = Integer.parseInt(usersInput.nextLine());
-            a = usersResponseNumber;
             r = usersResponseNumber;
-            /*if(a>0) {
+
+        boolean itemNames = true;
+        while(itemNames){
+            u++;
+            if (u > 0) {
+                r--;
+            }
+            if (u == 1) {
                 System.out.println("What's the name of Item 1?");
                 usersResponseWord = usersInput.nextLine();
-                System.out.println(createStrings(usersResponseWord,r,u));
+                item1 = usersResponseWord;
+            }
+            if (u == 2) {
                 System.out.println("What's the name of Item 2?");
                 usersResponseWord = usersInput.nextLine();
+                item2 = usersResponseWord;
+            }
+            if (u == 3) {
                 System.out.println("What's the name of Item 3?");
                 usersResponseWord = usersInput.nextLine();
+                item3 = usersResponseWord;
+            }
+            if (u == 4) {
                 System.out.println("What's the name of Item 4?");
                 usersResponseWord = usersInput.nextLine();
-                System.out.println(createStrings(usersResponseWord,r,u));
-                System.out.println("R: "+r);
-                System.out.println("U: "+u);
-                System.out.println(printItems(usersResponseWord,item1,item2,r,u));
-            }*/
-            boolean createItems = true;
-            while(createItems){
-                y++;
-                if(y>1){
-                    r--;
-                }
-                System.out.println("What's the name of Item "+y+"?");
-                usersResponseWord = usersInput.nextLine();
-                System.out.println(createStrings(usersResponseWord,usersResponseNumber,r));
-                System.out.println("What's the quantity of "+createStrings(usersResponseWord,usersResponseNumber,r)+" did you purchase?");
-                usersResponseNumber = usersInput.nextLine();
-                System.out.println("What was the cost per quantity?")
-                usersResponseNumber = usersInput.nextLine();
-                System.out.println("R:"+r);
-                System.out.println("Y:"+y);
-                if(r==0){
-                    createItems = false;
-                }
+                item4 = usersResponseWord;
             }
-            System.out.println("Out of Loop!");
+            if (r == 0) {
+                itemNames = false;
+                r = usersResponseNumber;
+                t = r;
+                u = 0;
+            }
         }
-    }
-    /*public static String suppliesBought(String usersResponseWord){
 
-    }*/
-    public static String createStrings(String usersResponseWord, int usersResponseNumber, int r){
-        String idk = "";
-        if(r==4) {
-            String item4 = usersResponseWord;
-            idk = item4;
-            int item4Cost = usersResponseNumber;
+        boolean itemQuantity = true;
+        while(itemQuantity){
+            u++;
+            if(u > 0){
+                r--;
+            }
+            if(u == 1){
+                System.out.println("What's the quantity of the "+item1+"?");
+                usersResponseNumber = Integer.parseInt(usersInput.nextLine());
+                item1Q = usersResponseNumber;
+            }
+            if(u == 2){
+                System.out.println("What's the quantity of the "+item2+"?");
+                usersResponseNumber = Integer.parseInt(usersInput.nextLine());
+                item2Q = usersResponseNumber;
+            }
+            if(u == 3){
+                System.out.println("What's the quantity of the "+item3+"?");
+                usersResponseNumber = Integer.parseInt(usersInput.nextLine());
+                item3Q = usersResponseNumber;
+            }
+            if(u == 4){
+                System.out.println("What's the quantity of the "+item4+"?");
+                usersResponseNumber = Integer.parseInt(usersInput.nextLine());
+                item4Q = usersResponseNumber;
+            }
+            if (r == 0) {
+                itemQuantity = false;
+                r = t;
+                u = 0;
+            }
         }
-        else if(r==3) {
-            String item3 = usersResponseWord;
-            idk = item3;
+
+        boolean itemCosts = true;
+        while(itemCosts){
+            u++;
+            if(u > 0){
+                r--;
+            }
+            if(u == 1){
+                System.out.println("What's the cost of each "+item1+"?");
+                usersResponseNumber = Integer.parseInt(usersInput.nextLine());
+                item1P = (usersResponseNumber/100.0)*item1Q;
+            }
+            /*if(item2Q == 0){
+                itemCosts = false;
+                r = t;
+                u = 0;
+            }*/
+            if(u == 2){
+                System.out.println("What's the cost of each "+item2+"?");
+                usersResponseNumber = Integer.parseInt(usersInput.nextLine());
+                item2P = (usersResponseNumber/100.0)*item2Q;
+            }
+            /*if(item3Q == 0){
+                itemCosts = false;
+                r = t;
+                u = 0;
+            }*/
+            if(u == 3){
+                System.out.println("What's the cost of each "+item3+"?");
+                usersResponseNumber = Integer.parseInt(usersInput.nextLine());
+                item3P = (usersResponseNumber/100.0)*item3Q;
+            }
+            /*if(item4Q == 0){
+                itemCosts = false;
+                r = t;
+                u = 0;
+            }*/
+            if(u == 4){
+                System.out.println("What's the cost of each "+item4+"?");
+                usersResponseNumber = Integer.parseInt(usersInput.nextLine());
+                item4P = (usersResponseNumber/100.0)*item4Q;
+            }
+            if (r == 0) {
+                itemCosts = false;
+                r = t;
+                u = 0;
+            }
         }
-        else if(r==2) {
-            String item2 = usersResponseWord;
-            idk = item2;
+
+        System.out.println("Item 1: "+item1Q+" "+item1+" for $"+item1P);
+        if(item2Q > 0) {
+            System.out.println("Item 2: " + item2Q + " " + item2 + " for $" + item2P);
         }
-        else if(r==1) {
-            String item1 = usersResponseWord;
-            idk = item1;
+        if(item3Q > 0) {
+            System.out.println("Item 3: " + item3Q + " " + item3 + " for $" + item3P);
         }
-        /*String item5 = usersResponseWord;
-        String item6 = usersResponseWord;
-        String item7 = usersResponseWord;*/
-        return idk;
+        if(item4Q > 0) {
+            System.out.println("Item 4: " + item4Q + " " + item4 + " for $" + item4P);
+        }
     }
 }
