@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner usersInput = new Scanner(System.in);
+        Scanner test = new Scanner(System.in);
         String usersResponseWord = "";
         String item1 = "";
         String item2 = "";
@@ -300,6 +301,7 @@ public class Main {
                 }
             }
         }
+
         String saleName1 = "";
         String saleName2 = "";
         String saleName3 = "";
@@ -319,20 +321,21 @@ public class Main {
         double saleP5 = 0;
         double saleP6 = 0;
         double totalSales = 0;
+        double revenue = 0;
         r = 0;
         u = 0;
         p = 0;
         t = 0;
 
         System.out.println("Now that we've collected the Supply Cost, lets find out whether or not you made a profit." +
-                "\nTo add individual items or to isolate sales type the number of items. If you simply want\nto type the " +
+                " To add individual items or to isolate sales type the number of items. If you simply want\nto type the " +
                 "total amount of sales, please type 0.");
-        usersResponseNumber = Integer.parseInt(usersInput.nextLine());
+        usersResponseNumber = usersInput.nextInt();
         r = usersResponseNumber;
         if (usersResponseNumber == 0) {
             System.out.println("What was the total amount of sales made?");
-            usersResponseNumber = Integer.parseInt(usersInput.nextLine());
-            totalSales = usersResponseNumber;
+            usersResponseDecimal = usersInput.nextDouble();
+            totalSales = usersResponseDecimal;
             p = 9;
         }
 
@@ -347,11 +350,13 @@ public class Main {
             }
             if (u == 1) {
                 System.out.println("What's the name of Item 1?");
+                usersInput.nextLine();
                 usersResponseWord = usersInput.nextLine();
                 saleName1 = usersResponseWord;
             }
             if (u == 2) {
                 System.out.println("What's the name of Item 2?");
+                usersInput.nextLine();
                 usersResponseWord = usersInput.nextLine();
                 saleName2 = usersResponseWord;
             }
@@ -423,7 +428,7 @@ public class Main {
                 saleQ6 = usersResponseNumber;
             }
             if (r == 0) {
-                itemQuantity = false;
+                saleQuantity = false;
                 r = t;
                 u = 0;
             }
@@ -479,27 +484,27 @@ public class Main {
             System.out.println("-------------------Sales---------------------");
             System.out.println("Item #      Name      Quantity     Price");
             System.out.println("---------------------------------------------");
-            if (item1Q > 0) {
+            if (saleQ1 > 0) {
                 System.out.println("Item 1:     " + saleName1 + "       " + saleQ1 + "        $" + saleP1);
                 System.out.println("---------------------------------------------");
             }
-            if (item2Q > 0) {
+            if (saleQ2 > 0) {
                 System.out.println("Item 2:     " + saleName2 + "       " + saleQ2 + "       $" + saleP2);
                 System.out.println("---------------------------------------------");
             }
-            if (item3Q > 0) {
+            if (saleQ3 > 0) {
                 System.out.println("Item 3:     " + saleName3 + "       " + saleQ3 + "       $" + saleP3);
                 System.out.println("---------------------------------------------");
             }
-            if (item4Q > 0) {
+            if (saleQ4 > 0) {
                 System.out.println("Item 4:     " + saleName4 + "       " + saleQ4 + "       $" + saleP4);
                 System.out.println("---------------------------------------------");
             }
-            if (item5Q > 0) {
+            if (saleQ5 > 0) {
                 System.out.println("Item 5:     " + saleName5 + "       " + saleQ5 + "       $" + saleP5);
                 System.out.println("---------------------------------------------");
             }
-            if (item6Q > 0) {
+            if (saleQ6 > 0) {
                 System.out.println("Item 6:     " + saleName6 + "       " + saleQ6 + "       $" + saleP6);
                 System.out.println("---------------------------------------------");
             }
@@ -508,7 +513,7 @@ public class Main {
             } else {
                 totalSales = salesCostMethod(saleP1,saleP2,saleP3,saleP4,saleP5,saleP6);
             }
-            System.out.println("                 Sales Total Cost: $" + totalSales);
+            System.out.println("                 Sales Total Cost: $" + numberFormat.format(totalSales));
             System.out.println("Do you want to retype any of the information presented?\nIf not type 0. If so type" +
                     " the Item Number to redo it or \nadd a new item!!");
             usersResponseNumber = usersInput.nextInt();
@@ -517,6 +522,7 @@ public class Main {
             }
             else if (usersResponseNumber == 1) {
                 System.out.println("What's the name of Item 1?");
+                usersInput.nextLine();
                 usersResponseWord = usersInput.nextLine();
                 saleName1 = usersResponseWord;
                 System.out.println("What's the quantity of the " + saleName1 + "?");
@@ -557,7 +563,8 @@ public class Main {
                     usersResponseWord = usersInput.nextLine();
                     saleName4 = usersResponseWord;
                     System.out.println("What's the quantity of the " + saleName4 + "?");
-                    usersResponseNumber = Integer.parseInt(usersInput.nextLine());
+                    usersInput.nextInt();
+                    usersResponseNumber = usersInput.nextInt();
                     saleQ4 = usersResponseNumber;
                     System.out.println("What's the cost of each " + saleName4 + "?");
                     usersResponseDecimal = usersInput.nextDouble();
@@ -593,7 +600,16 @@ public class Main {
                 }
             }
         }
-
+        revenue = revenueMethod(suppliesCost,totalSales);
+        if(revenue > 0){
+            System.out.println("You profited $"+revenue+" after spending $"+suppliesCost+" on supplies!");
+        }
+        else if(revenue < 0){
+            System.out.println("You lost $"+revenue+" after spending $"+suppliesCost+" on supplies.");
+        }
+        else if(revenue == 0){
+            System.out.println("You didn't make a profit nor did you lose any money!");
+        }
         System.out.println("Thanks for using my code!");
         System.exit(6317);
     }
@@ -606,4 +622,7 @@ public class Main {
         return (saleP1+saleP2+saleP3+saleP4+saleP5+saleP6);
     }
 
+    public  static double revenueMethod(double suppliesCost,double totalSales){
+        return (totalSales-suppliesCost);
+    }
 }
