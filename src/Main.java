@@ -194,8 +194,9 @@ public class Main {
             }
             boolean retypeInfo = true;
             while (retypeInfo) {
-                System.out.println("Business Name: "+organizationName);
                 System.out.println("-----------------Supplies--------------------");
+                System.out.println("Business Name: "+organizationName);
+                System.out.println("---------------------------------------------");
                 System.out.println("Item #      Name      Quantity     Price");
                 System.out.println("---------------------------------------------");
                 if (item1Q > 0) {
@@ -228,6 +229,7 @@ public class Main {
                     suppliesCost = suppliesCostMethod(item1P, item2P, item3P, item4P, item5P, item6P);
                 }
                 System.out.println("              Supplies Total Cost: $" + numberFormat.format(suppliesCost));
+                System.out.println("---------------------------------------------");
                 System.out.println("Do you want to retype any of the information presented?\nIf not type 0. If so type" +
                         " the Item Number to redo it or \nadd a new item!!");
                 usersResponseNumber = usersInput.nextInt();
@@ -496,8 +498,9 @@ public class Main {
             }
             boolean salesRetypeInfo = true;
             while (salesRetypeInfo) {
-                System.out.println("Business Name: "+organizationName);
                 System.out.println("-------------------Sales---------------------");
+                System.out.println("Business Name: "+organizationName);
+                System.out.println("---------------------------------------------");
                 System.out.println("Item #      Name      Quantity     Price");
                 System.out.println("---------------------------------------------");
                 if (saleQ1 > 0) {
@@ -530,6 +533,7 @@ public class Main {
                     totalSales = salesCostMethod(saleP1, saleP2, saleP3, saleP4, saleP5, saleP6);
                 }
                 System.out.println("                 Sales Total Cost: $" + numberFormat.format(totalSales));
+                System.out.println("---------------------------------------------");
                 System.out.println("Do you want to retype any of the information presented?\nIf not type 0. If so type" +
                         " the Item Number to redo it or \nadd a new item!!");
                 usersResponseNumber = usersInput.nextInt();
