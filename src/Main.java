@@ -4,7 +4,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner usersInput = new Scanner(System.in);
-        Scanner test = new Scanner(System.in);
+        String organizationName = "";
+        int v = 0;
+        DecimalFormat numberFormat = new DecimalFormat("#.00");
+        System.out.println("What's the name of your business?");
+        organizationName = usersInput.nextLine();
 
         boolean entireCode = true;
         while (entireCode) {
@@ -34,8 +38,6 @@ public class Main {
         int u = 0;
         int t = 0;
         int p = 0;
-        int v = 0;
-        DecimalFormat numberFormat = new DecimalFormat("#.00");
 
             if(v>0){
                 System.out.println("Times Completed Running Code: "+v);
@@ -192,6 +194,7 @@ public class Main {
             }
             boolean retypeInfo = true;
             while (retypeInfo) {
+                System.out.println("Business Name: "+organizationName);
                 System.out.println("-----------------Supplies--------------------");
                 System.out.println("Item #      Name      Quantity     Price");
                 System.out.println("---------------------------------------------");
@@ -278,7 +281,7 @@ public class Main {
                         System.out.println("What's the quantity of the " + item4 + "?");
                         usersResponseNumber = Integer.parseInt(usersInput.nextLine());
                         item4Q = usersResponseNumber;
-                        System.out.println("What's the cost of each " + item4 + "?(Type in pennies!)");
+                        System.out.println("What's the cost of each " + item4 + "?");
                         usersResponseNumber = Integer.parseInt(usersInput.nextLine());
                         item4P = usersResponseDecimal * item4Q;
                     }
@@ -293,7 +296,7 @@ public class Main {
                         System.out.println("What's the quantity of the " + item5 + "?");
                         usersResponseNumber = Integer.parseInt(usersInput.nextLine());
                         item5Q = usersResponseNumber;
-                        System.out.println("What's the cost of each " + item5 + "?(Type in pennies!)");
+                        System.out.println("What's the cost of each " + item5 + "?");
                         usersResponseNumber = Integer.parseInt(usersInput.nextLine());
                         item5P = usersResponseDecimal * item5Q;
                     }
@@ -308,7 +311,7 @@ public class Main {
                         System.out.println("What's the quantity of the " + item6 + "?");
                         usersResponseNumber = Integer.parseInt(usersInput.nextLine());
                         item6Q = usersResponseNumber;
-                        System.out.println("What's the cost of each " + item6 + "?(Type in pennies!)");
+                        System.out.println("What's the cost of each " + item6 + "?");
                         usersResponseNumber = Integer.parseInt(usersInput.nextLine());
                         item6P = usersResponseDecimal * item6Q;
                     }
@@ -374,7 +377,6 @@ public class Main {
                 }
                 if (u == 3) {
                     System.out.println("What's the name of Item 3?");
-                    usersInput.nextLine();
                     usersResponseWord = usersInput.nextLine();
                     saleName3 = usersResponseWord;
                 }
@@ -385,7 +387,6 @@ public class Main {
                 }
                 if (u == 5) {
                     System.out.println("What's the name of Item 5?");
-                    usersInput.nextLine();
                     usersResponseWord = usersInput.nextLine();
                     saleName5 = usersResponseWord;
                 }
@@ -495,6 +496,7 @@ public class Main {
             }
             boolean salesRetypeInfo = true;
             while (salesRetypeInfo) {
+                System.out.println("Business Name: "+organizationName);
                 System.out.println("-------------------Sales---------------------");
                 System.out.println("Item #      Name      Quantity     Price");
                 System.out.println("---------------------------------------------");
@@ -546,6 +548,7 @@ public class Main {
                     saleP1 = usersResponseDecimal * saleQ1;
                 } else if (usersResponseNumber == 2) {
                     System.out.println("What's the name of Item 2?");
+                    usersInput.nextLine();
                     usersResponseWord = usersInput.nextLine();
                     saleName2 = usersResponseWord;
                     System.out.println("What's the quantity of the " + saleName2 + "?");
@@ -559,6 +562,7 @@ public class Main {
                         System.out.println("There isn't an Item 2!");
                     } else {
                         System.out.println("What's the name of Item 3?");
+                        usersInput.nextLine();
                         usersResponseWord = usersInput.nextLine();
                         saleName3 = usersResponseWord;
                         System.out.println("What's the quantity of the " + saleName3 + "?");
@@ -573,6 +577,7 @@ public class Main {
                         System.out.println("There isn't an Item 3!");
                     } else {
                         System.out.println("What's the name of Item 4?");
+                        usersInput.nextLine();
                         usersResponseWord = usersInput.nextLine();
                         saleName4 = usersResponseWord;
                         System.out.println("What's the quantity of the " + saleName4 + "?");
@@ -588,6 +593,7 @@ public class Main {
                         System.out.println("There isn't an Item 4!");
                     } else {
                         System.out.println("What's the name of Item 5?");
+                        usersInput.nextLine();
                         usersResponseWord = usersInput.nextLine();
                         saleName5 = usersResponseWord;
                         System.out.println("What's the quantity of the " + saleName5 + "?");
@@ -602,6 +608,7 @@ public class Main {
                         System.out.println("There isn't an Item 5!");
                     } else {
                         System.out.println("What's the name of Item 6?");
+                        usersInput.nextLine();
                         usersResponseWord = usersInput.nextLine();
                         saleName6 = usersResponseWord;
                         System.out.println("What's the quantity of the " + saleName6 + "?");
@@ -614,9 +621,9 @@ public class Main {
                 }
             }
             revenue = revenueMethod(suppliesCost, totalSales);
-            if (revenue > 0) {
+            if (totalSales>suppliesCost) {
                 System.out.println("You profited $" + revenue + " after spending $" + suppliesCost + " on supplies!");
-            } else if (revenue < 0) {
+            } else if (totalSales<suppliesCost) {
                 System.out.println("You lost $" + revenue + " after spending $" + suppliesCost + " on supplies.");
             } else if (revenue == 0) {
                 System.out.println("You didn't make a profit nor did you lose any money!");
@@ -649,6 +656,14 @@ public class Main {
     }
 
     public  static double revenueMethod(double suppliesCost,double totalSales){
-        return (totalSales-suppliesCost);
+        if(totalSales>suppliesCost){
+            return (totalSales-suppliesCost);
+        }
+        else if(totalSales<suppliesCost){
+            return (suppliesCost-totalSales);
+        }
+        else{
+            return (totalSales-suppliesCost);
+        }
     }
 }
