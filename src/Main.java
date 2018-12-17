@@ -53,10 +53,7 @@ public class Main {
                 p = 9;
             }
 
-            boolean itemNames = true;
-            if (p == 9) {
-                itemNames = false;
-            }
+            boolean itemNames = returningMethod(p);
             while (itemNames) {
                 u++;
                 if (u > 0) {
@@ -101,10 +98,7 @@ public class Main {
                 }
             }
 
-            boolean itemQuantity = true;
-            if (p == 9) {
-                itemQuantity = false;
-            }
+            boolean itemQuantity = returningMethod(p);
             while (itemQuantity) {
                 u++;
                 if (u > 0) {
@@ -147,10 +141,7 @@ public class Main {
                 }
             }
 
-            boolean itemCosts = true;
-            if (p == 9) {
-                itemCosts = false;
-            }
+            boolean itemCosts = returningMethod(p);
             while (itemCosts) {
                 u++;
                 if (u > 0) {
@@ -356,10 +347,7 @@ public class Main {
                 p = 9;
             }
 
-            boolean salesItems = true;
-            if (p == 9) {
-                salesItems = false;
-            }
+            boolean salesItems = returningMethod(p);
             while (salesItems) {
                 u++;
                 if (u > 0) {
@@ -404,10 +392,7 @@ public class Main {
                 }
             }
 
-            boolean saleQuantity = true;
-            if (p == 9) {
-                saleQuantity = false;
-            }
+            boolean saleQuantity = returningMethod(p);
             while (saleQuantity) {
                 u++;
                 if (u > 0) {
@@ -450,10 +435,7 @@ public class Main {
                 }
             }
 
-            boolean saleCosts = true;
-            if (p == 9) {
-                saleCosts = false;
-            }
+            boolean saleCosts = returningMethod(p);
             while (saleCosts) {
                 u++;
                 if (u > 0) {
@@ -650,6 +632,16 @@ public class Main {
         System.out.println("Thanks for using my code!");
         System.exit(6317);
     }
+
+    public static boolean returningMethod(int p){
+        if(p == 9){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
     public static double suppliesCostMethod(double item1P,double item2P,double item3P,double item4P,double item5P,double item6p){
         return (item1P+item2P+item3P+item4P+item5P+item6p);
     }
